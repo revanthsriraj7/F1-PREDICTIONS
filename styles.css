@@ -18,13 +18,20 @@
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background: linear-gradient(135deg, var(--f1-darker) 0%, var(--f1-dark) 100%);
+    background: -webkit-linear-gradient(135deg, var(--f1-darker) 0%, var(--f1-dark) 100%);
     color: var(--f1-light);
     min-height: 100vh;
+    min-height: -webkit-fill-available; /* iOS fix for 100vh */
     overflow-x: hidden;
     position: relative;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    touch-action: manipulation; /* Better touch performance */
+    touch-action: manipulation;
+}
+
+/* iOS viewport height fix */
+html {
+    height: -webkit-fill-available;
 }
 
 /* Animated Background */
@@ -35,10 +42,19 @@ body {
     width: 100%;
     height: 100%;
     background: 
+        -webkit-radial-gradient(circle at 20% 50%, rgba(225, 6, 0, 0.1) 0%, transparent 50%),
+        -webkit-radial-gradient(circle at 80% 80%, rgba(0, 217, 255, 0.1) 0%, transparent 50%);
+    background: 
         radial-gradient(circle at 20% 50%, rgba(225, 6, 0, 0.1) 0%, transparent 50%),
         radial-gradient(circle at 80% 80%, rgba(0, 217, 255, 0.1) 0%, transparent 50%);
     z-index: -1;
+    -webkit-animation: pulse 8s ease-in-out infinite;
     animation: pulse 8s ease-in-out infinite;
+}
+
+@-webkit-keyframes pulse {
+    0%, 100% { opacity: 0.5; }
+    50% { opacity: 0.8; }
 }
 
 @keyframes pulse {
@@ -53,6 +69,14 @@ body {
     width: 100%;
     height: 100%;
     background-image: 
+        -webkit-repeating-linear-gradient(
+            0deg,
+            transparent,
+            transparent 50px,
+            rgba(225, 6, 0, 0.03) 50px,
+            rgba(225, 6, 0, 0.03) 51px
+        );
+    background-image: 
         repeating-linear-gradient(
             0deg,
             transparent,
@@ -61,7 +85,13 @@ body {
             rgba(225, 6, 0, 0.03) 51px
         );
     z-index: -1;
+    -webkit-animation: scroll-lines 20s linear infinite;
     animation: scroll-lines 20s linear infinite;
+}
+
+@-webkit-keyframes scroll-lines {
+    0% { -webkit-transform: translateY(0); transform: translateY(0); }
+    100% { -webkit-transform: translateY(51px); transform: translateY(51px); }
 }
 
 @keyframes scroll-lines {
@@ -88,6 +118,19 @@ body {
 
 .screen.active {
     display: block;
+}
+
+@-webkit-keyframes fadeIn {
+    from {
+        opacity: 0;
+        -webkit-transform: translateY(20px);
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        -webkit-transform: translateY(0);
+        transform: translateY(0);
+    }
 }
 
 @keyframes fadeIn {
@@ -125,8 +168,21 @@ body {
 .f1-logo-img {
     width: 200px;
     height: auto;
+    -webkit-filter: drop-shadow(0 0 20px rgba(225, 6, 0, 0.5));
     filter: drop-shadow(0 0 20px rgba(225, 6, 0, 0.5));
+    -webkit-animation: logoGlow 3s ease-in-out infinite;
     animation: logoGlow 3s ease-in-out infinite;
+}
+
+@-webkit-keyframes logoGlow {
+    0%, 100% {
+        -webkit-filter: drop-shadow(0 0 20px rgba(225, 6, 0, 0.5));
+        filter: drop-shadow(0 0 20px rgba(225, 6, 0, 0.5));
+    }
+    50% {
+        -webkit-filter: drop-shadow(0 0 30px rgba(225, 6, 0, 0.8));
+        filter: drop-shadow(0 0 30px rgba(225, 6, 0, 0.8));
+    }
 }
 
 @keyframes logoGlow {
@@ -157,6 +213,7 @@ body {
 .season-badge {
     display: inline-block;
     padding: 6px 16px;
+    background: -webkit-linear-gradient(135deg, var(--f1-red), #C10500);
     background: linear-gradient(135deg, var(--f1-red), #C10500);
     color: var(--f1-light);
     font-size: 11px;
@@ -183,6 +240,7 @@ body {
 .welcome-card {
     background: rgba(56, 56, 63, 0.3);
     backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px); /* iOS Safari */
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 20px;
     padding: 60px 40px;
@@ -231,6 +289,7 @@ body {
     border-radius: 10px;
     color: var(--f1-light);
     font-size: 18px;
+    -webkit-transition: all 0.3s ease;
     transition: all 0.3s ease;
     -webkit-appearance: none; /* Remove iOS default styling */
     appearance: none;
@@ -262,21 +321,25 @@ body {
     border-radius: 10px;
     cursor: pointer;
     overflow: hidden;
+    -webkit-transition: all 0.3s ease;
     transition: all 0.3s ease;
 }
 
 .btn-primary {
+    background: -webkit-linear-gradient(135deg, var(--f1-red), #C10500);
     background: linear-gradient(135deg, var(--f1-red), #C10500);
     color: var(--f1-light);
     width: 100%;
 }
 
 .btn-primary:hover {
+    -webkit-transform: translateY(-2px);
     transform: translateY(-2px);
     box-shadow: 0 10px 30px rgba(225, 6, 0, 0.4);
 }
 
 .btn-primary:active {
+    -webkit-transform: translateY(0);
     transform: translateY(0);
 }
 
@@ -286,7 +349,9 @@ body {
     left: -100%;
     width: 100%;
     height: 100%;
+    background: -webkit-linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
     background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    -webkit-transition: left 0.5s;
     transition: left 0.5s;
 }
 
@@ -340,7 +405,9 @@ body {
 
 .progress-fill {
     height: 100%;
+    background: -webkit-linear-gradient(90deg, var(--f1-red), var(--neon-red));
     background: linear-gradient(90deg, var(--f1-red), var(--neon-red));
+    -webkit-transition: width 0.3s ease;
     transition: width 0.3s ease;
     box-shadow: 0 0 10px var(--f1-red);
 }
@@ -392,6 +459,7 @@ body {
     font-size: 12px;
     font-weight: 700;
     cursor: pointer;
+    -webkit-transition: all 0.3s ease;
     transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
@@ -400,10 +468,12 @@ body {
 .question-nav-item:hover {
     border-color: var(--f1-red);
     background: rgba(225, 6, 0, 0.1);
+    -webkit-transform: translateY(-2px);
     transform: translateY(-2px);
 }
 
 .question-nav-item.active {
+    background: -webkit-linear-gradient(135deg, var(--f1-red), #C10500);
     background: linear-gradient(135deg, var(--f1-red), #C10500);
     border-color: var(--f1-red);
     color: var(--f1-light);
@@ -429,6 +499,7 @@ body {
 .question-card {
     background: rgba(56, 56, 63, 0.3);
     backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px); /* iOS Safari */
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 20px;
     padding: 40px;
@@ -466,6 +537,7 @@ body {
     border-radius: 12px;
     padding: 20px;
     cursor: pointer;
+    -webkit-transition: all 0.3s ease;
     transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
@@ -482,7 +554,9 @@ body {
     left: -100%;
     width: 100%;
     height: 100%;
+    background: -webkit-linear-gradient(90deg, transparent, rgba(225, 6, 0, 0.1), transparent);
     background: linear-gradient(90deg, transparent, rgba(225, 6, 0, 0.1), transparent);
+    -webkit-transition: left 0.5s;
     transition: left 0.5s;
 }
 
@@ -492,11 +566,13 @@ body {
 
 .driver-card:hover {
     border-color: var(--f1-red);
+    -webkit-transform: translateY(-5px);
     transform: translateY(-5px);
     box-shadow: 0 10px 30px rgba(225, 6, 0, 0.3);
 }
 
 .driver-card.selected {
+    background: -webkit-linear-gradient(135deg, rgba(225, 6, 0, 0.3), rgba(193, 5, 0, 0.3));
     background: linear-gradient(135deg, rgba(225, 6, 0, 0.3), rgba(193, 5, 0, 0.3));
     border-color: var(--f1-red);
     box-shadow: 0 0 20px rgba(225, 6, 0, 0.5);
@@ -577,8 +653,14 @@ body {
 
 .checkered-flag {
     font-size: 120px;
+    -webkit-animation: wave 1s ease-in-out infinite;
     animation: wave 1s ease-in-out infinite;
     display: inline-block;
+}
+
+@-webkit-keyframes wave {
+    0%, 100% { -webkit-transform: rotate(-10deg); transform: rotate(-10deg); }
+    50% { -webkit-transform: rotate(10deg); transform: rotate(10deg); }
 }
 
 @keyframes wave {
