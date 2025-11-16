@@ -64,16 +64,16 @@ const questions = [
     // Position predictions (P1 to P20)
     ...Array.from({ length: 20 }, (_, i) => ({
         id: `p${i + 1}`,
-        title: `YOUR P${i + 1}`,
+        title: `LAS VEGAS GP - YOUR P${i + 1}`,
         type: 'driver',
         questionNumber: `QUESTION ${i + 1} / 24`
     })),
     // Special predictions
-    { id: 'pole_driver', title: 'POLE POSITION DRIVER', type: 'driver', questionNumber: 'QUESTION 21 / 24' },
-    { id: 'pole_time', title: 'POLE LAP TIME', type: 'time', questionNumber: 'QUESTION 22 / 24', placeholder: '12.246' },
-    { id: 'fastest_lap_driver', title: 'FASTEST LAP DRIVER', type: 'driver', questionNumber: 'QUESTION 23 / 24' },
-    { id: 'fastest_lap_time', title: 'FASTEST LAP TIME', type: 'time', questionNumber: 'QUESTION 24 / 24', placeholder: '12.246' },
-    { id: 'most_positions', title: 'DRIVER GAINING MOST POSITIONS', type: 'driver', questionNumber: 'QUESTION 25 / 24' }
+    { id: 'pole_driver', title: 'LAS VEGAS - POLE POSITION DRIVER', type: 'driver', questionNumber: 'QUESTION 21 / 24' },
+    { id: 'pole_time', title: 'LAS VEGAS - POLE LAP TIME', type: 'time', questionNumber: 'QUESTION 22 / 24', placeholder: '12.246' },
+    { id: 'fastest_lap_driver', title: 'LAS VEGAS - FASTEST LAP DRIVER', type: 'driver', questionNumber: 'QUESTION 23 / 24' },
+    { id: 'fastest_lap_time', title: 'LAS VEGAS - FASTEST LAP TIME', type: 'time', questionNumber: 'QUESTION 24 / 24', placeholder: '12.246' },
+    { id: 'most_positions', title: 'LAS VEGAS - MOST POSITIONS GAINED', type: 'driver', questionNumber: 'QUESTION 25 / 24' }
 ];
 
 // Update questions count
@@ -490,4 +490,3 @@ document.addEventListener('keydown', (e) => {
         }
     }
 });
-

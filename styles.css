@@ -270,8 +270,31 @@ html {
 .subtitle {
     text-align: center;
     color: var(--f1-silver);
-    margin-bottom: 40px;
+    margin-bottom: 20px;
     font-size: 16px;
+}
+
+/* Circuit Image */
+.circuit-image-container {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.circuit-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 12px;
+    border: 2px solid rgba(225, 6, 0, 0.3);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 20px rgba(225, 6, 0, 0.2);
+    -webkit-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+
+.circuit-image:hover {
+    border-color: var(--f1-red);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6), 0 0 30px rgba(225, 6, 0, 0.4);
+    -webkit-transform: scale(1.02);
+    transform: scale(1.02);
 }
 
 /* Input Group */
@@ -834,6 +857,11 @@ html {
         border-radius: 15px;
     }
     
+    .circuit-image {
+        max-width: 100%;
+        border-radius: 10px;
+    }
+    
     .glitch {
         font-size: 28px;
         letter-spacing: 2px;
@@ -994,7 +1022,16 @@ html {
     
     .subtitle {
         font-size: 13px;
-        margin-bottom: 30px;
+        margin-bottom: 15px;
+    }
+    
+    .circuit-image-container {
+        margin-bottom: 20px;
+    }
+    
+    .circuit-image {
+        max-width: 100%;
+        border-radius: 8px;
     }
     
     .input-group {

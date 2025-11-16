@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
     <meta name="theme-color" content="#E10600">
-    <meta name="description" content="F1 Prediction Challenge - Submit your race predictions">
-    <title>F1 Prediction Challenge</title>
+    <meta name="description" content="Las Vegas Grand Prix Prediction Challenge - Submit your race predictions">
+    <title>Las Vegas GP - F1 Prediction Challenge</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -27,8 +27,11 @@
             </div>
             
             <div class="welcome-card">
-                <h1 class="glitch" data-text="RACE PREDICTION">RACE PREDICTION</h1>
-                <p class="subtitle">Enter your predictions for the upcoming Grand Prix</p>
+                <h1 class="glitch" data-text="LAS VEGAS GP">LAS VEGAS GP</h1>
+                <p class="subtitle">Enter your predictions for the Las Vegas Grand Prix</p>
+                <div class="circuit-image-container">
+                    <img src="las_vegas_circuit.png" alt="Las Vegas Circuit" class="circuit-image">
+                </div>
                 
                 <div class="input-group">
                     <label for="participantName">ENTER YOUR NAME</label>
@@ -95,7 +98,7 @@
             <div class="success-animation">
                 <div class="checkered-flag">🏁</div>
                 <h1 class="success-title">PREDICTIONS SUBMITTED!</h1>
-                <p class="success-message">Your predictions have been recorded for the race.</p>
+                <p class="success-message">Your predictions have been recorded for the Las Vegas Grand Prix.</p>
                 <p class="success-message">Good luck, <span id="successName"></span>!</p>
                 
                 <button class="btn-primary" onclick="resetForm()">
