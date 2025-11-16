@@ -17,8 +17,16 @@
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(135deg, var(--f1-darker) 0%, var(--f1-dark) 100%);
-    background: -webkit-linear-gradient(135deg, var(--f1-darker) 0%, var(--f1-dark) 100%);
+    background: 
+        linear-gradient(135deg, rgba(21, 21, 30, 0.6) 0%, rgba(10, 10, 15, 0.6) 100%),
+        url('norris_crash.jpg');
+    background: 
+        -webkit-linear-gradient(135deg, rgba(21, 21, 30, 0.6) 0%, rgba(10, 10, 15, 0.6) 100%),
+        url('norris_crash.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
     color: var(--f1-light);
     min-height: 100vh;
     min-height: -webkit-fill-available; /* iOS fix for 100vh */
@@ -42,11 +50,11 @@ html {
     width: 100%;
     height: 100%;
     background: 
-        -webkit-radial-gradient(circle at 20% 50%, rgba(225, 6, 0, 0.1) 0%, transparent 50%),
-        -webkit-radial-gradient(circle at 80% 80%, rgba(0, 217, 255, 0.1) 0%, transparent 50%);
+        -webkit-radial-gradient(circle at 20% 50%, rgba(225, 6, 0, 0.05) 0%, transparent 50%),
+        -webkit-radial-gradient(circle at 80% 80%, rgba(0, 217, 255, 0.05) 0%, transparent 50%);
     background: 
-        radial-gradient(circle at 20% 50%, rgba(225, 6, 0, 0.1) 0%, transparent 50%),
-        radial-gradient(circle at 80% 80%, rgba(0, 217, 255, 0.1) 0%, transparent 50%);
+        radial-gradient(circle at 20% 50%, rgba(225, 6, 0, 0.05) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(0, 217, 255, 0.05) 0%, transparent 50%);
     z-index: -1;
     -webkit-animation: pulse 8s ease-in-out infinite;
     animation: pulse 8s ease-in-out infinite;
@@ -73,16 +81,16 @@ html {
             0deg,
             transparent,
             transparent 50px,
-            rgba(225, 6, 0, 0.03) 50px,
-            rgba(225, 6, 0, 0.03) 51px
+            rgba(225, 6, 0, 0.01) 50px,
+            rgba(225, 6, 0, 0.01) 51px
         );
     background-image: 
         repeating-linear-gradient(
             0deg,
             transparent,
             transparent 50px,
-            rgba(225, 6, 0, 0.03) 50px,
-            rgba(225, 6, 0, 0.03) 51px
+            rgba(225, 6, 0, 0.01) 50px,
+            rgba(225, 6, 0, 0.01) 51px
         );
     z-index: -1;
     -webkit-animation: scroll-lines 20s linear infinite;
@@ -586,6 +594,20 @@ html {
     margin-bottom: 5px;
 }
 
+.driver-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 10px;
+}
+
+.driver-image {
+    width: 70px;
+    height: 70px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
 .driver-info {
     width: 100%;
 }
@@ -611,24 +633,69 @@ html {
     margin: 0 auto;
 }
 
-.time-input-container input {
-    width: 100%;
-    padding: 20px;
-    background: rgba(255, 255, 255, 0.05);
-    border: 2px solid rgba(255, 255, 255, 0.1);
-    border-radius: 10px;
+.fixed-time-input {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: rgba(0, 0, 0, 0.4);
+    border: 2px solid rgba(225, 6, 0, 0.3);
+    border-radius: 12px;
+    padding: 30px 40px;
+    font-size: 48px;
+    font-weight: 900;
+    letter-spacing: 4px;
     color: var(--f1-light);
-    font-size: 24px;
-    text-align: center;
-    font-weight: 700;
-    letter-spacing: 2px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5), inset 0 0 20px rgba(225, 6, 0, 0.1);
+    -webkit-transition: all 0.3s ease;
+    transition: all 0.3s ease;
 }
 
-.time-input-container input:focus {
-    outline: none;
+.fixed-time-input:focus-within {
     border-color: var(--f1-red);
-    background: rgba(225, 6, 0, 0.1);
-    box-shadow: 0 0 20px rgba(225, 6, 0, 0.3);
+    box-shadow: 0 10px 40px rgba(225, 6, 0, 0.4), inset 0 0 20px rgba(225, 6, 0, 0.2);
+}
+
+.time-prefix {
+    color: var(--f1-red);
+    font-weight: 900;
+    user-select: none;
+    text-shadow: 0 0 10px rgba(225, 6, 0, 0.5);
+    font-size: 48px;
+}
+
+.time-dot {
+    color: var(--f1-red);
+    font-weight: 900;
+    user-select: none;
+    text-shadow: 0 0 10px rgba(225, 6, 0, 0.5);
+    font-size: 48px;
+}
+
+.fixed-time-input input {
+    background: transparent;
+    border: none;
+    outline: none;
+    color: var(--f1-light);
+    font-size: 48px;
+    font-weight: 900;
+    letter-spacing: 4px;
+    text-align: center;
+    font-family: inherit;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+#timeInputSeconds {
+    width: 80px;
+}
+
+#timeInputMilliseconds {
+    width: 120px;
+}
+
+.fixed-time-input input::placeholder {
+    color: rgba(255, 255, 255, 0.2);
+    font-weight: 700;
 }
 
 /* Navigation Buttons */
@@ -694,6 +761,13 @@ html {
 
 /* Responsive Design */
 @media (max-width: 768px) {
+    body.welcome-active {
+        background-attachment: scroll;
+        overflow: hidden; /* Prevent scrolling on mobile only on welcome screen */
+        position: fixed; /* Fix position to prevent scroll only on welcome screen */
+        width: 100%;
+        height: 100vh;
+    }
     .container {
         padding: 15px;
     }
@@ -808,8 +882,18 @@ html {
         padding: 12px;
     }
     
+    .driver-header {
+        gap: 10px;
+        margin-bottom: 8px;
+    }
+    
     .driver-number {
         font-size: 24px;
+    }
+    
+    .driver-image {
+        width: 45px;
+        height: 45px;
     }
     
     .driver-name {
@@ -938,19 +1022,47 @@ html {
     .driver-card {
         padding: 15px;
         display: flex;
+        flex-direction: row;
         align-items: center;
         gap: 15px;
+        position: relative;
+    }
+    
+    .driver-header {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0;
+        margin-bottom: 0;
+        min-width: auto;
+        width: 100%;
+        order: 0;
     }
     
     .driver-number {
-        font-size: 28px;
+        font-size: 42px;
         margin-bottom: 0;
-        min-width: 50px;
+        min-width: auto;
+        text-align: left;
+        order: 1;
+    }
+    
+    .driver-image {
+        width: 70px;
+        height: 70px;
+        margin-bottom: 0;
+        flex-shrink: 0;
+        order: 2;
     }
     
     .driver-info {
         flex: 1;
         text-align: left;
+        position: absolute;
+        left: 80px;
+        top: 50%;
+        transform: translateY(-50%);
     }
     
     .driver-name {
@@ -962,8 +1074,26 @@ html {
     }
     
     .time-input-container input {
-        font-size: 18px;
-        padding: 12px;
+        font-size: 28px;
+    }
+    
+    #timeInputSeconds {
+        width: 70px;
+    }
+    
+    #timeInputMilliseconds {
+        width: 100px;
+    }
+    
+    .fixed-time-input {
+        font-size: 28px;
+        padding: 20px 15px;
+        gap: 4px;
+    }
+    
+    .time-prefix,
+    .time-dot {
+        font-size: 28px;
     }
     
     .btn-primary, .btn-secondary {

@@ -69,7 +69,12 @@
                     
                     <div class="drivers-grid" id="driversGrid"></div>
                     <div class="time-input-container" id="timeInputContainer" style="display: none;">
-                        <input type="text" id="timeInput" placeholder="MM:SS.mmm" pattern="\d{1,2}:\d{2}\.\d{3}">
+                        <div class="fixed-time-input">
+                            <span class="time-prefix">1:</span>
+                            <input type="text" id="timeInputSeconds" placeholder="12" maxlength="2" pattern="\d{2}">
+                            <span class="time-dot">.</span>
+                            <input type="text" id="timeInputMilliseconds" placeholder="246" maxlength="3" pattern="\d{3}">
+                        </div>
                     </div>
                 </div>
 
