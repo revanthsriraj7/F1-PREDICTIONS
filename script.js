@@ -241,8 +241,11 @@ function updateQuestionNavigation() {
         if (index === currentQuestion) {
             item.classList.add('active');
             // Scroll into view
-           item.scrollIntoView({ behavior: 'smooth', inline: 'center' });
-        }
+           const nav = document.querySelector('.question-nav-scroll');
+nav.scrollTo({
+    left: item.offsetLeft - nav.clientWidth / 2 + item.clientWidth / 2,
+    behavior: 'smooth'
+});
     });
 }
 
@@ -490,6 +493,7 @@ document.addEventListener('keydown', (e) => {
         }
     }
 });
+
 
 
 
