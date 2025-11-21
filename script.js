@@ -404,7 +404,7 @@ function nextQuestion() {
     } else {
         // Check if all questions are answered before submitting
         if (!allQuestionsAnswered()) {
-            alert('Please answer all questions before submitting');
+            alert('Get yo ass back here and submit all questions before leaving nigga');
             return;
         }
         submitPredictions();
@@ -490,3 +490,4 @@ document.addEventListener('keydown', (e) => {
         }
     }
 });
+
