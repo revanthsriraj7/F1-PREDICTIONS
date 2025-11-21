@@ -241,7 +241,7 @@ function updateQuestionNavigation() {
         if (index === currentQuestion) {
             item.classList.add('active');
             // Scroll into view
-            item.scrollIntoView({ behavior: 'smooth', block: 'end', inline: 'nearest' });
+           // item.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
         }
     });
 }
@@ -490,5 +490,6 @@ document.addEventListener('keydown', (e) => {
         }
     }
 });
+
 
 
