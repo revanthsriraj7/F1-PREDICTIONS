@@ -243,7 +243,7 @@ function updateQuestionNavigation() {
             // Scroll into view
            item.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
         }
-    }):
+    });
 }
 
 function navigateToQuestion(index) {
