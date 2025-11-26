@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <meta name="theme-color" content="#E10600">
+    <meta name="description" content="QATAR Grand Prix Prediction Challenge - Submit your race predictions ya fat ass cunts">
+    <title>Qatar GP - F1 Prediction Competition</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="background-overlay"></div>
+    <div class="racing-lines"></div>
+    
+    <div class="container">
+        <!-- Welcome Screen -->
+        <div class="screen active" id="welcomeScreen">
+            <div class="logo-container">
+                <div class="f1-header">
+                    <img src="F1.svg.png" alt="F1 Logo" class="f1-logo-img">
+                    <div class="f1-logo">
+                        <span class="prediction-text">PREDICTION</span>
+                        <div class="season-badge">2025 SEASON</div>
+                    </div>
+                </div>
+                <div class="gang-badge">JOPPE'S GANG</div>
+            </div>
+            
+            <div class="welcome-card">
+                <h1 class="glitch" data-text="QATAR GP">QATAR GP</h1>
+                <p class="subtitle">Enter your predictions for the Qatar Grand Prix. Lando is Gay</p>
+                <div class="circuit-image-container">
+                    <img src="LV2025.png" alt="Qatar Circuit" class="circuit-image">
+                </div>
+                
+                <div class="input-group">
+                    <label for="participantName">ENTER YOUR NAME</label>
+                    <input type="text" id="participantName" placeholder="Your Name" autocomplete="off" required>
+                    <div class="input-underline"></div>
+                </div>
+                
+                <button class="btn-primary" onclick="startPrediction()">
+                    <span>START PREDICTING</span>
+                    <div class="btn-glow"></div>
+                </button>
+            </div>
+        </div>
+
+        <!-- Prediction Form Screen -->
+        <div class="screen" id="predictionScreen">
+            <div class="header">
+                <div class="participant-info">
+                    <span class="label">CUNT:</span>
+                    <span class="name" id="displayName"></span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+            </div>
+
+            <!-- Question Navigation Bar -->
+            <div class="question-nav-container">
+                <div class="question-nav-scroll">
+                    <div class="question-nav" id="questionNav"></div>
+                </div>
+            </div>
+
+            <div class="form-content">
+                <div class="question-card" id="questionCard">
+                    <div class="question-number" id="questionNumber"></div>
+                    <h2 class="question-title" id="questionTitle"></h2>
+                    
+                    <div class="drivers-grid" id="driversGrid"></div>
+                    <div class="time-input-container" id="timeInputContainer" style="display: none;">
+                        <div class="fixed-time-input">
+                            <span class="time-prefix">1:</span>
+                            <input type="text" id="timeInputSeconds" placeholder="12" maxlength="2" pattern="\d{2}">
+                            <span class="time-dot">.</span>
+                            <input type="text" id="timeInputMilliseconds" placeholder="246" maxlength="3" pattern="\d{3}">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="navigation-buttons">
+                    <button class="btn-secondary" id="prevBtn" onclick="previousQuestion()" style="display: none;">
+                        <span>← PREVIOUS</span>
+                    </button>
+                    <button class="btn-primary" id="nextBtn" onclick="nextQuestion()">
+                        <span id="nextBtnText">NEXT →</span>
+                        <div class="btn-glow"></div>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Success Screen -->
+        <div class="screen" id="successScreen">
+            <div class="success-animation">
+                <div class="checkered-flag">🏁</div>
+                <h1 class="success-title">PREDICTIONS SUBMITTED!</h1>
+                <p class="success-message">Your predictions have been recorded for the Qatar Grand Prix, Go Back to wanking ya twink ass chigger.</p>
+                <p class="success-message">Good luck, hope you dont get fucked by a black guy - <span id="successName"></span> nigger.</p>
+                
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
+
+
+
+

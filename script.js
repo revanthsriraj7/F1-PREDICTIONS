@@ -1,5 +1,5 @@
 // Configuration - Update this with your Google Apps Script Web App URL
-const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbywsnHlIMBHcgSkYGTWGzG5GPfj1k7WA-00wLY9P0_GnV9IxdVKn3giEcb9cJHRDakF/exec';
+const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwIt1hY-OXHGj0hsjBX4U63AODC3wakk4JAnVo47D37QbzdXHvP7QeFL2XW0LBEH-w/exec';
 
 // F1 2025 Drivers Data
 const drivers = [
@@ -437,6 +437,8 @@ async function submitPredictions() {
             timestamp: predictions.timestamp,
             ...predictions
         };
+        
+        console.log('Submitting data:', submissionData);
         
         // Submit to Google Sheets
         const response = await fetch(GOOGLE_SCRIPT_URL, {
