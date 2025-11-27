@@ -19,10 +19,10 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background: 
         linear-gradient(135deg, rgba(21, 21, 30, 0.6) 0%, rgba(10, 10, 15, 0.6) 100%),
-        url('norris_crash.jpg');
+        url('lewis-hamilton-mercedes-amg-petronas-851077241.webp');
     background: 
         -webkit-linear-gradient(135deg, rgba(21, 21, 30, 0.6) 0%, rgba(10, 10, 15, 0.6) 100%),
-        url('norris_crash.jpg');
+        url('lewis-hamilton-mercedes-amg-petronas-851077241.webp');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -1151,3 +1151,4 @@ html {
         font-size: 15px;
     }
 }
+
