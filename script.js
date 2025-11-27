@@ -404,7 +404,7 @@ function nextQuestion() {
     } else {
         // Check if all questions are answered before submitting
         if (!allQuestionsAnswered()) {
-            alert('Get yo ass back here and submit all questions before leaving nigga');
+            alert('Get yo ass back here and submit all questions before leaving nigga or you will have to spectate joppe fuck julius. (Easter Egg)');
             return;
         }
         submitPredictions();
@@ -492,6 +492,7 @@ document.addEventListener('keydown', (e) => {
         }
     }
 });
+
 
 
 
