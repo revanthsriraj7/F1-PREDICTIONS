@@ -347,63 +347,6 @@ html {
     flex-shrink: 0;
 }
 
-.video-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 100;
-    pointer-events: auto;
-    cursor: default;
-}
-
-.video-overlay::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 60px;
-    background: linear-gradient(to bottom, rgba(0,0,0,0.95) 0%, transparent 100%);
-    pointer-events: none;
-}
-
-.video-overlay::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 90px;
-    background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, transparent 100%);
-    pointer-events: none;
-}
-
-#introPlayer::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 50px;
-    background: linear-gradient(to bottom, rgba(0,0,0,0.9) 0%, transparent 100%);
-    z-index: 10;
-    pointer-events: none;
-}
-
-#introPlayer::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 80px;
-    background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, transparent 100%);
-    z-index: 10;
-    pointer-events: none;
-}
-
 #introPlayer iframe {
     position: absolute;
     top: 0;
@@ -411,7 +354,20 @@ html {
     width: 100%;
     height: 100%;
     border: 0;
-    pointer-events: none;
+}
+
+.video-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    pointer-events: all;
+    cursor: default;
+    background: 
+        linear-gradient(to bottom, rgba(0,0,0,0.9) 0%, transparent 15%),
+        linear-gradient(to top, rgba(0,0,0,0.9) 0%, transparent 20%);
 }
 
 .skip-button {
