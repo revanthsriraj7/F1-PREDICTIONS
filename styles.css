@@ -364,10 +364,39 @@ html {
     height: 100%;
     z-index: 10;
     pointer-events: all;
-    cursor: default;
+    cursor: pointer;
     background: 
         linear-gradient(to bottom, rgba(0,0,0,0.9) 0%, transparent 15%),
-        linear-gradient(to top, rgba(0,0,0,0.9) 0%, transparent 20%);
+        linear-gradient(to top, rgba(0,0,0,0.9) 0%, transparent 20%),
+        rgba(0,0,0,0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.3s ease;
+}
+
+.play-prompt {
+    text-align: center;
+    color: var(--f1-light);
+    animation: pulse-scale 2s ease-in-out infinite;
+}
+
+.play-icon {
+    font-size: 5rem;
+    margin-bottom: 20px;
+    text-shadow: 0 0 20px rgba(225, 6, 0, 0.8);
+}
+
+.play-prompt p {
+    font-size: 1.5rem;
+    font-weight: bold;
+    letter-spacing: 3px;
+    text-shadow: 0 0 10px rgba(225, 6, 0, 0.6);
+}
+
+@keyframes pulse-scale {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
 }
 
 .skip-button {

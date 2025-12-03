@@ -19,7 +19,12 @@
                 <h2 class="intro-text">RELIVE THE MOMENT WHERE HIS ERA STARTED, WE NEED A REPEAT OF THIS!</h2>
                 <div class="video-wrapper">
                     <div id="introPlayer"></div>
-                    <div class="video-overlay"></div>
+                    <div class="video-overlay" id="videoOverlay" onclick="startVideo()">
+                        <div class="play-prompt">
+                            <div class="play-icon">▶</div>
+                            <p>CLICK TO PLAY VIDEO</p>
+                        </div>
+                    </div>
                     <div class="skip-section">
                         <button class="skip-button" onclick="skipIntro()">SKIP →</button>
                         <p class="skip-subtext">you can skip it if you're gay</p>
@@ -130,13 +135,15 @@
         firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
         var introPlayer;
+        var playerReady = false;
+
         function onYouTubeIframeAPIReady() {
             introPlayer = new YT.Player('introPlayer', {
                 height: '100%',
                 width: '100%',
                 videoId: 'KvxMZhdMerk',
                 playerVars: {
-                    'autoplay': 1,
+                    'autoplay': 0,
                     'mute': 0,
                     'controls': 0,
                     'disablekb': 1,
@@ -156,13 +163,16 @@
         }
 
         function onPlayerReady(event) {
-            // Unmute and set volume first
-            event.target.unMute();
-            event.target.setVolume(100);
-            // Small delay then play
-            setTimeout(function() {
-                event.target.playVideo();
-            }, 100);
+            playerReady = true;
+        }
+
+        function startVideo() {
+            if (playerReady && introPlayer) {
+                introPlayer.unMute();
+                introPlayer.setVolume(100);
+                introPlayer.playVideo();
+                document.getElementById('videoOverlay').style.display = 'none';
+            }
         }
 
         function onPlayerStateChange(event) {
