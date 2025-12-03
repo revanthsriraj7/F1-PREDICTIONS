@@ -274,6 +274,153 @@ html {
     font-size: 16px;
 }
 
+/* Intro Video Screen - Full Screen */
+.intro-video-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 9999;
+    background: 
+        linear-gradient(135deg, rgba(21, 21, 30, 0.6) 0%, rgba(10, 10, 15, 0.6) 100%),
+        url('norris_crash.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding-top: 10vh;
+    overflow: hidden;
+    gap: 30px;
+}
+
+.intro-text {
+    color: var(--f1-light);
+    font-size: 1.8rem;
+    font-weight: bold;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 0 0 20px rgba(225, 6, 0, 0.8), 0 0 40px rgba(225, 6, 0, 0.4);
+    animation: pulse-glow 2s ease-in-out infinite;
+    max-width: 90%;
+    margin: 0;
+    padding: 0 20px;
+}
+
+@keyframes pulse-glow {
+    0%, 100% { 
+        text-shadow: 0 0 20px rgba(225, 6, 0, 0.8), 0 0 40px rgba(225, 6, 0, 0.4);
+    }
+    50% { 
+        text-shadow: 0 0 30px rgba(225, 6, 0, 1), 0 0 60px rgba(225, 6, 0, 0.6);
+    }
+}
+
+.video-wrapper {
+    position: relative;
+    width: 80%;
+    max-width: 1000px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.skip-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+#introPlayer {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border: 3px solid var(--f1-red);
+    border-radius: 0;
+    box-shadow: 0 0 50px rgba(225, 6, 0, 0.6);
+    pointer-events: none;
+    overflow: hidden;
+    position: relative;
+    flex-shrink: 0;
+}
+
+.skip-button {
+    background: var(--f1-red);
+    color: var(--f1-light);
+    border: 2px solid var(--f1-red);
+    padding: 15px 30px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 20px rgba(225, 6, 0, 0.5);
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.skip-button:hover {
+    background: transparent;
+    color: var(--f1-red);
+    box-shadow: 0 0 30px rgba(225, 6, 0, 0.8);
+    transform: translateX(5px);
+}
+
+.skip-subtext {
+    color: var(--f1-silver);
+    font-size: 0.9rem;
+    font-style: italic;
+    text-align: center;
+    margin: 0;
+    opacity: 0.8;
+    white-space: nowrap;
+}
+
+#introPlayer iframe {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: scale(1.01);
+}
+
+/* YouTube Video Container */
+.video-container {
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    margin: 30px auto;
+    padding-bottom: 56.25%; /* 16:9 aspect ratio */
+    height: 0;
+    overflow: hidden;
+    border-radius: 12px;
+    border: 3px solid var(--f1-red);
+    box-shadow: 0 0 30px rgba(225, 6, 0, 0.5), 0 10px 40px rgba(0, 0, 0, 0.6);
+}
+
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* Disable user interaction */
+}
+
+#player {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* Disable user interaction */
+}
+
 /* Circuit Image */
 .circuit-image-container {
     text-align: center;
@@ -791,6 +938,44 @@ html {
         width: 100%;
         height: 100vh;
     }
+
+    /* Intro Video Mobile Styles */
+    .intro-video-container {
+        padding-top: 5vh;
+        gap: 15px;
+    }
+
+    .intro-text {
+        font-size: 1rem;
+        letter-spacing: 1px;
+        padding: 0 15px;
+    }
+
+    .video-wrapper {
+        flex-direction: column;
+        width: 95%;
+        gap: 15px;
+    }
+
+    #introPlayer {
+        width: 100%;
+    }
+
+    .skip-section {
+        width: 100%;
+    }
+
+    .skip-button {
+        width: 100%;
+        padding: 12px 20px;
+        font-size: 1rem;
+        letter-spacing: 1.5px;
+    }
+
+    .skip-subtext {
+        font-size: 0.8rem;
+    }
+
     .container {
         padding: 15px;
     }

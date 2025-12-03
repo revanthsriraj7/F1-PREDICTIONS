@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
     <meta name="theme-color" content="#E10600">
-    <meta name="description" content="QATAR Grand Prix Prediction Challenge - Submit your race predictions ya fat ass cunts">
-    <title>Qatar GP - F1 Prediction Competition</title>
+    <meta name="description" content="ABU DHABI Grand Prix Prediction Challenge - Submit your race predictions ya fat ass cunts">
+    <title>Abu Dhabi GP - F1 Prediction Competition</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -13,8 +13,22 @@
     <div class="racing-lines"></div>
     
     <div class="container">
+        <!-- Intro Video Screen -->
+        <div class="screen active" id="introScreen">
+            <div class="intro-video-container">
+                <h2 class="intro-text">RELIVE THE MOMENT WHERE HIS ERA STARTED, WE NEED A REPEAT OF THIS!</h2>
+                <div class="video-wrapper">
+                    <div id="introPlayer"></div>
+                    <div class="skip-section">
+                        <button class="skip-button" onclick="skipIntro()">SKIP →</button>
+                        <p class="skip-subtext">you can skip it if you're gay</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <!-- Welcome Screen -->
-        <div class="screen active" id="welcomeScreen">
+        <div class="screen" id="welcomeScreen">
             <div class="logo-container">
                 <div class="f1-header">
                     <img src="F1.svg.png" alt="F1 Logo" class="f1-logo-img">
@@ -27,8 +41,9 @@
             </div>
             
             <div class="welcome-card">
-                <h1 class="glitch" data-text="QATAR GP">QATAR GP</h1>
-                <p class="subtitle">Enter your predictions for the Qatar Grand Prix. Lando is Gay</p>
+                <h1 class="glitch" data-text="ABU DHABI GP">ABU DHABI GP</h1>
+                <p class="subtitle">Enter your predictions for the Abu Dhabi Grand Prix - FINAL RACE OF THE SEASON! Lando is Gay</p>
+                
                 <div class="circuit-image-container">
                     <img src="LV2025.png" alt="Qatar Circuit" class="circuit-image">
                 </div>
@@ -105,11 +120,64 @@
         </div>
     </div>
 
+    <!-- YouTube IFrame API -->
+    <script>
+        // Load YouTube IFrame API
+        var tag = document.createElement('script');
+        tag.src = "https://www.youtube.com/iframe_api";
+        var firstScriptTag = document.getElementsByTagName('script')[0];
+        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+        var introPlayer;
+        function onYouTubeIframeAPIReady() {
+            introPlayer = new YT.Player('introPlayer', {
+                height: '100%',
+                width: '100%',
+                videoId: 'KvxMZhdMerk',
+                playerVars: {
+                    'autoplay': 1,
+                    'controls': 0,
+                    'showinfo': 0,
+                    'rel': 0,
+                    'modestbranding': 1,
+                    'disablekb': 1,
+                    'fs': 0,
+                    'iv_load_policy': 3,
+                    'playsinline': 1,
+                    'cc_load_policy': 0,
+                    'autohide': 1
+                },
+                events: {
+                    'onReady': onPlayerReady,
+                    'onStateChange': onPlayerStateChange
+                }
+            });
+        }
+
+        function onPlayerReady(event) {
+            event.target.playVideo();
+            event.target.setVolume(100);
+        }
+
+        function onPlayerStateChange(event) {
+            // When video ends (state 0), transition to welcome screen
+            if (event.data === YT.PlayerState.ENDED) {
+                document.getElementById('introScreen').classList.remove('active');
+                document.getElementById('welcomeScreen').classList.add('active');
+            }
+        }
+
+        function skipIntro() {
+            document.getElementById('introScreen').classList.remove('active');
+            document.getElementById('welcomeScreen').classList.add('active');
+            if (introPlayer) {
+                introPlayer.stopVideo();
+            }
+        }
+    </script>
     <script src="script.js"></script>
 </body>
 </html>
-
-
 
 
 
