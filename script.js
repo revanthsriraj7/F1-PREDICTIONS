@@ -1,5 +1,5 @@
 // Configuration - Update this with your Google Apps Script Web App URL
-const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwIt1hY-OXHGj0hsjBX4U63AODC3wakk4JAnVo47D37QbzdXHvP7QeFL2XW0LBEH-w/exec';
+const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzkBfeCEWauTDERnnf9rkJkp5f_n9Bsw9b7TlqEcfQGLRjBWSryxE5YZBYRhk3WER0/exec';
 
 // F1 2025 Drivers Data
 const drivers = [
@@ -404,7 +404,7 @@ function nextQuestion() {
     } else {
         // Check if all questions are answered before submitting
         if (!allQuestionsAnswered()) {
-            alert('Get yo ass back here and submit all questions before leaving nigga');
+            alert('Get yo ass back here and submit all questions before leaving nigga or you will have to spectate joppe fuck julius. (Easter Egg)');
             return;
         }
         submitPredictions();
@@ -492,6 +492,8 @@ document.addEventListener('keydown', (e) => {
         }
     }
 });
+
+
 
 
 
