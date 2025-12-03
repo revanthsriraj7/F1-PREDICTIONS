@@ -399,6 +399,21 @@ html {
     50% { transform: scale(1.1); }
 }
 
+.video-block-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 15;
+    pointer-events: all;
+    cursor: default;
+    display: none;
+    background: 
+        linear-gradient(to bottom, rgba(0,0,0,0.9) 0%, transparent 15%),
+        linear-gradient(to top, rgba(0,0,0,0.9) 0%, transparent 20%);
+}
+
 .skip-button {
     background: var(--f1-red);
     color: var(--f1-light);
