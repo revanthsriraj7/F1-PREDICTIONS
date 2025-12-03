@@ -19,10 +19,10 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background: 
         linear-gradient(135deg, rgba(21, 21, 30, 0.6) 0%, rgba(10, 10, 15, 0.6) 100%),
-        url('lewis-hamilton-mercedes-amg-petronas-851077241.webp');
+        url('norris_crash.jpg');
     background: 
         -webkit-linear-gradient(135deg, rgba(21, 21, 30, 0.6) 0%, rgba(10, 10, 15, 0.6) 100%),
-        url('lewis-hamilton-mercedes-amg-petronas-851077241.webp');
+        url('norris_crash.jpg');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -996,8 +996,13 @@ html {
 
 /* Responsive Design */
 @media (max-width: 768px) {
-    body.welcome-active {
+    body {
         background-attachment: scroll;
+        background-size: cover;
+        background-position: center center;
+    }
+
+    body.welcome-active {
         overflow: hidden; /* Prevent scrolling on mobile only on welcome screen */
         position: fixed; /* Fix position to prevent scroll only on welcome screen */
         width: 100%;
