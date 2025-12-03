@@ -334,6 +334,8 @@ html {
     flex-direction: column;
     align-items: center;
     gap: 10px;
+    position: relative;
+    z-index: 25;
 }
 
 #introPlayer {
@@ -448,6 +450,10 @@ html {
     box-shadow: 0 0 20px rgba(225, 6, 0, 0.5);
     white-space: nowrap;
     flex-shrink: 0;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+    position: relative;
+    z-index: 20;
 }
 
 .skip-button:hover {
