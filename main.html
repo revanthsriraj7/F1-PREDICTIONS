@@ -19,6 +19,7 @@
                 <h2 class="intro-text">RELIVE THE MOMENT WHERE HIS ERA STARTED, WE NEED A REPEAT OF THIS!</h2>
                 <div class="video-wrapper">
                     <div id="introPlayer"></div>
+                    <div class="video-overlay"></div>
                     <div class="skip-section">
                         <button class="skip-button" onclick="skipIntro()">SKIP →</button>
                         <p class="skip-subtext">you can skip it if you're gay</p>
@@ -136,6 +137,7 @@
                 videoId: 'KvxMZhdMerk',
                 playerVars: {
                     'autoplay': 1,
+                    'mute': 0,
                     'controls': 0,
                     'showinfo': 0,
                     'rel': 0,
@@ -145,7 +147,9 @@
                     'iv_load_policy': 3,
                     'playsinline': 1,
                     'cc_load_policy': 0,
-                    'autohide': 1
+                    'autohide': 1,
+                    'enablejsapi': 1,
+                    'origin': window.location.origin
                 },
                 events: {
                     'onReady': onPlayerReady,
@@ -155,8 +159,9 @@
         }
 
         function onPlayerReady(event) {
-            event.target.playVideo();
             event.target.setVolume(100);
+            event.target.unMute();
+            event.target.playVideo();
         }
 
         function onPlayerStateChange(event) {

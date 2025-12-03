@@ -19,10 +19,10 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background: 
         linear-gradient(135deg, rgba(21, 21, 30, 0.6) 0%, rgba(10, 10, 15, 0.6) 100%),
-        url('norris_crash.jpg');
+        url('lewis-hamilton-mercedes-amg-petronas-851077241.webp');
     background: 
         -webkit-linear-gradient(135deg, rgba(21, 21, 30, 0.6) 0%, rgba(10, 10, 15, 0.6) 100%),
-        url('norris_crash.jpg');
+        url('lewis-hamilton-mercedes-amg-petronas-851077241.webp');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -342,10 +342,76 @@ html {
     border: 3px solid var(--f1-red);
     border-radius: 0;
     box-shadow: 0 0 50px rgba(225, 6, 0, 0.6);
-    pointer-events: none;
     overflow: hidden;
     position: relative;
     flex-shrink: 0;
+}
+
+.video-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 100;
+    pointer-events: auto;
+    cursor: default;
+}
+
+.video-overlay::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.95) 0%, transparent 100%);
+    pointer-events: none;
+}
+
+.video-overlay::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 90px;
+    background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, transparent 100%);
+    pointer-events: none;
+}
+
+#introPlayer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 50px;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.9) 0%, transparent 100%);
+    z-index: 10;
+    pointer-events: none;
+}
+
+#introPlayer::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 80px;
+    background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, transparent 100%);
+    z-index: 10;
+    pointer-events: none;
+}
+
+#introPlayer iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+    pointer-events: none;
 }
 
 .skip-button {
@@ -379,14 +445,6 @@ html {
     margin: 0;
     opacity: 0.8;
     white-space: nowrap;
-}
-
-#introPlayer iframe {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transform: scale(1.01);
 }
 
 /* YouTube Video Container */
@@ -1336,3 +1394,4 @@ html {
         font-size: 15px;
     }
 }
+
