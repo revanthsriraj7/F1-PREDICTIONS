@@ -1000,6 +1000,11 @@ html {
         background-attachment: scroll;
         background-size: cover;
         background-position: center center;
+        min-height: 100vh;
+    }
+
+    .container {
+        min-height: 100vh;
     }
 
     body.welcome-active {
