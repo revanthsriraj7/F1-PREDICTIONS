@@ -139,6 +139,9 @@
         var playerReady = false;
 
         function onYouTubeIframeAPIReady() {
+            // Detect mobile device
+            var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+            
             introPlayer = new YT.Player('introPlayer', {
                 height: '100%',
                 width: '100%',
@@ -154,7 +157,8 @@
                     'showinfo': 0,
                     'iv_load_policy': 3,
                     'playsinline': 1,
-                    'enablejsapi': 1
+                    'enablejsapi': 1,
+                    'quality': isMobile ? 'medium' : 'hd720'
                 },
                 events: {
                     'onReady': onPlayerReady,
