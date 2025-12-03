@@ -18,7 +18,12 @@
             <div class="intro-video-container">
                 <h2 class="intro-text">RELIVE THE MOMENT WHERE HIS ERA STARTED, WE NEED A REPEAT OF THIS!</h2>
                 <div class="video-wrapper">
-                    <div id="introPlayer"></div>
+                    <div id="introPlayer">
+                        <video id="driveVideo" playsinline>
+                            <source src="AD21 FINAL LAPp.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
                     <div class="video-overlay" id="videoOverlay" onclick="startVideo()">
                         <div class="play-prompt">
                             <div class="play-icon">▶</div>
@@ -128,73 +133,42 @@
         </div>
     </div>
 
-    <!-- YouTube IFrame API -->
+    <!-- Video Control Script -->
     <script>
-        // Load YouTube IFrame API
-        var tag = document.createElement('script');
-        tag.src = "https://www.youtube.com/iframe_api";
-        var firstScriptTag = document.getElementsByTagName('script')[0];
-        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+        var videoStarted = false;
+        var video = null;
 
-        var introPlayer;
-        var playerReady = false;
-
-        function onYouTubeIframeAPIReady() {
-            // Detect mobile device
-            var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+        // Wait for video element to load
+        window.addEventListener('load', function() {
+            video = document.getElementById('driveVideo');
             
-            introPlayer = new YT.Player('introPlayer', {
-                height: '100%',
-                width: '100%',
-                videoId: 'KvxMZhdMerk',
-                playerVars: {
-                    'autoplay': 0,
-                    'mute': 0,
-                    'controls': 0,
-                    'disablekb': 1,
-                    'fs': 0,
-                    'modestbranding': 1,
-                    'rel': 0,
-                    'showinfo': 0,
-                    'iv_load_policy': 3,
-                    'playsinline': 1,
-                    'enablejsapi': 1,
-                    'quality': isMobile ? 'medium' : 'hd720'
-                },
-                events: {
-                    'onReady': onPlayerReady,
-                    'onStateChange': onPlayerStateChange
-                }
-            });
-        }
-
-        function onPlayerReady(event) {
-            playerReady = true;
-        }
+            // Listen for video end
+            if (video) {
+                video.addEventListener('ended', function() {
+                    document.getElementById('introScreen').classList.remove('active');
+                    document.getElementById('welcomeScreen').classList.add('active');
+                });
+            }
+        });
 
         function startVideo() {
-            if (playerReady && introPlayer) {
-                introPlayer.unMute();
-                introPlayer.setVolume(100);
-                introPlayer.playVideo();
-                document.getElementById('videoOverlay').style.display = 'none';
-                document.getElementById('blockOverlay').style.display = 'block';
-            }
-        }
-
-        function onPlayerStateChange(event) {
-            // When video ends (state 0), transition to welcome screen
-            if (event.data === YT.PlayerState.ENDED) {
-                document.getElementById('introScreen').classList.remove('active');
-                document.getElementById('welcomeScreen').classList.add('active');
+            if (!videoStarted && video) {
+                video.volume = 1.0;
+                video.play().then(function() {
+                    document.getElementById('videoOverlay').style.display = 'none';
+                    document.getElementById('blockOverlay').style.display = 'block';
+                    videoStarted = true;
+                }).catch(function(error) {
+                    console.log('Autoplay prevented:', error);
+                });
             }
         }
 
         function skipIntro() {
             document.getElementById('introScreen').classList.remove('active');
             document.getElementById('welcomeScreen').classList.add('active');
-            if (introPlayer) {
-                introPlayer.stopVideo();
+            if (video) {
+                video.pause();
             }
         }
     </script>
